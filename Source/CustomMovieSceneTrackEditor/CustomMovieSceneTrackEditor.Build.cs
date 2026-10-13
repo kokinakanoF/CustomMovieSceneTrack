@@ -15,13 +15,12 @@ public class CustomMovieSceneTrackEditor : ModuleRules
 			}
 			);
 				
-		
-		PrivateIncludePaths.AddRange(
-			new string[] {
-				// ... add other private include paths required here ...
-			}
-			);
-
+        PrivateIncludePaths.AddRange(
+            new string[] 
+            {
+                System.IO.Path.Combine(GetModuleDirectory("MovieSceneTools"), "Private"),
+            }
+        );
 
         PublicDependencyModuleNames.AddRange(
             new string[]
@@ -45,6 +44,7 @@ public class CustomMovieSceneTrackEditor : ModuleRules
 				"GameplayTagsEditor",
                 "GameplayTags",
 				"Sequencer",
+                "SequencerCore",
                 "MovieScene",
 				"MovieSceneTracks",
 				"MovieSceneTools",

@@ -10,6 +10,14 @@ class UMovieSceneKeyStructType;
 class FSequencerKeyStructGenerator;
 struct FMovieSceneGameplayTagChannel;
 
+
+#include "GameplayTag/SGameplayTagCurveKeyEditor.h"
+#include "Channels/MovieSceneChannelHandle.h"
+CUSTOMMOVIESCENETRACKEDITOR_API bool CanCreateKeyEditor(const FMovieSceneGameplayTagChannel* Channel);
+CUSTOMMOVIESCENETRACKEDITOR_API TSharedRef<SWidget> CreateKeyEditor(const TMovieSceneChannelHandle<FMovieSceneGameplayTagChannel>& Channel, const UE::Sequencer::FCreateKeyEditorParams& Params);
+
+
+
 /** Track Editor for GameplayTag Property */
 class FGameplayTagPropertyTrackEditor : public FPropertyTrackEditor<UMovieSceneGameplayTagTrack>
 {

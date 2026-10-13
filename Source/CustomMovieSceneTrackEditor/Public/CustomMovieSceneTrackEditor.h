@@ -4,6 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
+#include "GameplayTagContainer.h"
+#include "MovieSceneClipboard.h"
+
+namespace MovieSceneClipboard
+{
+	template<> inline FName GetKeyTypeName<FGameplayTag>()
+	{
+		static FName Name("GameplayTag");
+		return Name;
+	}
+}
 
 class FCustomMovieSceneTrackEditor : public IModuleInterface
 {

@@ -5,6 +5,34 @@
 #include "SequencerKeyStructGenerator.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 
+
+//#include "GameplayTag/SGameplayTagCurveKeyEditor.h"
+//#include "Channels/MovieSceneChannelHandle.h"
+bool CanCreateKeyEditor(const FMovieSceneGameplayTagChannel* Channel)
+{
+	return true;
+}
+
+TSharedRef<SWidget> CreateKeyEditor(const TMovieSceneChannelHandle<FMovieSceneGameplayTagChannel>& Channel, const UE::Sequencer::FCreateKeyEditorParams& Params)
+{
+	const TMovieSceneExternalValue<FGameplayTag>* ExternalValue = Channel.GetExtendedEditorData();
+	if (!ExternalValue)
+	{
+		return SNullWidget::NullWidget;
+	}
+
+	TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag> KeyEditor(
+		Params.ObjectBindingID, Channel,
+		Params.OwningSection, Params.Sequencer, Params.PropertyBindings, ExternalValue->OnGetExternalValue
+	);
+	KeyEditor.SetOwningObject(Cast<UMovieSceneSignedObject>(Params.OwningObject));
+
+	return SNew(SGameplayTagCurveKeyEditor, KeyEditor);
+}
+
+
+
+
 TSharedRef<ISequencerTrackEditor> FGameplayTagPropertyTrackEditor::CreateTrackEditor(TSharedRef<ISequencer> OwningSequencer)
 {
 	return MakeShared<FGameplayTagPropertyTrackEditor>(OwningSequencer);

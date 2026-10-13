@@ -6,8 +6,6 @@
 
 UMovieSceneGameplayTagTrack::UMovieSceneGameplayTagTrack(const FObjectInitializer& ObjInit)
 {
-	SupportedBlendTypes.Add(EMovieSceneBlendType::Absolute);
-	SupportedBlendTypes.Add(EMovieSceneBlendType::Additive);
 }
 
 UMovieSceneSection* UMovieSceneGameplayTagTrack::CreateNewSection()

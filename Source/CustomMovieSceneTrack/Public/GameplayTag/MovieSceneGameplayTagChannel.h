@@ -102,19 +102,19 @@ public:
 	}
 
 	//~ Begin FMovieSceneChannel
-	virtual void GetKeys(const TRange<FFrameNumber>& WithinRange, TArray<FFrameNumber>* OutKeyTimes, TArray<FKeyHandle>* OutKeyHandles) override;
-	virtual void GetKeyTimes(TArrayView<const FKeyHandle> InHandles, TArrayView<FFrameNumber> OutKeyTimes) override;
-	virtual void SetKeyTimes(TArrayView<const FKeyHandle> InHandles, TArrayView<const FFrameNumber> InKeyTimes) override;
-	virtual void DuplicateKeys(TArrayView<const FKeyHandle> InHandles, TArrayView<FKeyHandle> OutNewHandles) override;
-	virtual void DeleteKeys(TArrayView<const FKeyHandle> InHandles) override;
-	virtual void DeleteKeysFrom(FFrameNumber InTime, bool bDeleteKeysBefore) override;
-	virtual void RemapTimes(const UE::MovieScene::IRetimingInterface& Retimer) override;
-	virtual TRange<FFrameNumber> ComputeEffectiveRange() const override;
-	virtual int32 GetNumKeys() const override;
-	virtual void Reset() override;
-	virtual void Offset(FFrameNumber DeltaPosition) override;
-	virtual void Optimize(const FKeyDataOptimizationParams& InParameters) override;
-	virtual void ClearDefault() override;
+	CUSTOMMOVIESCENETRACK_API virtual void GetKeys(const TRange<FFrameNumber>& WithinRange, TArray<FFrameNumber>* OutKeyTimes, TArray<FKeyHandle>* OutKeyHandles) override;
+	CUSTOMMOVIESCENETRACK_API virtual void GetKeyTimes(TArrayView<const FKeyHandle> InHandles, TArrayView<FFrameNumber> OutKeyTimes) override;
+	CUSTOMMOVIESCENETRACK_API virtual void SetKeyTimes(TArrayView<const FKeyHandle> InHandles, TArrayView<const FFrameNumber> InKeyTimes) override;
+	CUSTOMMOVIESCENETRACK_API virtual void DuplicateKeys(TArrayView<const FKeyHandle> InHandles, TArrayView<FKeyHandle> OutNewHandles) override;
+	CUSTOMMOVIESCENETRACK_API virtual void DeleteKeys(TArrayView<const FKeyHandle> InHandles) override;
+	CUSTOMMOVIESCENETRACK_API virtual void DeleteKeysFrom(FFrameNumber InTime, bool bDeleteKeysBefore) override;
+	CUSTOMMOVIESCENETRACK_API virtual void RemapTimes(const UE::MovieScene::IRetimingInterface& Retimer) override;
+	CUSTOMMOVIESCENETRACK_API virtual TRange<FFrameNumber> ComputeEffectiveRange() const override;
+	CUSTOMMOVIESCENETRACK_API virtual int32 GetNumKeys() const override;
+	CUSTOMMOVIESCENETRACK_API virtual void Reset() override;
+	CUSTOMMOVIESCENETRACK_API virtual void Offset(FFrameNumber DeltaPosition) override;
+	CUSTOMMOVIESCENETRACK_API virtual void Optimize(const FKeyDataOptimizationParams& InParameters) override;
+	CUSTOMMOVIESCENETRACK_API virtual void ClearDefault() override;
 	//~ End FMovieSceneChannel
 
 private:
