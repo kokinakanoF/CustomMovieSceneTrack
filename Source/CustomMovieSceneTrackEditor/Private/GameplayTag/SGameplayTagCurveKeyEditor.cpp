@@ -3,6 +3,7 @@
 #include "SGameplayTagCurveKeyEditor.h"
 #include "SGameplayTagCombo.h"
 #include "ScopedTransaction.h"
+#include "Widgets/Layout/SBox.h"
 
 #define LOCTEXT_NAMESPACE "SGameplayTagCurveKeyEditor"
 
@@ -13,10 +14,8 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 	ChildSlot
 	[
 		SNew(SGameplayTagCombo)
-		//.MinDesiredWidth(10.f)
-		//.SelectAllTextWhenFocused(true)
-		.Tag(this, &SGameplayTagCurveKeyEditor::GetGameplayTag)
-		.OnTagChanged(this, &SGameplayTagCurveKeyEditor::OnTagChanged)
+			.Tag(this, &SGameplayTagCurveKeyEditor::GetGameplayTag)
+			.OnTagChanged(this, &SGameplayTagCurveKeyEditor::OnTagChanged)
 	];
 }
 
