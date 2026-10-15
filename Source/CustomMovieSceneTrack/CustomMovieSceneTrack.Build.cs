@@ -29,11 +29,6 @@ public class CustomMovieSceneTrack : ModuleRules
                 "Core",
                 "CoreUObject",
                 "Engine",
-                "InputCore",
-				// For UI
-                "Slate",
-                "SlateCore",
-                "UMG",
             }
             );
 

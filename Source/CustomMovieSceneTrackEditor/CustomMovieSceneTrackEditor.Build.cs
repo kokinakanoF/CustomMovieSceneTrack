@@ -28,7 +28,6 @@ public class CustomMovieSceneTrackEditor : ModuleRules
                 "Core",
                 "CoreUObject",
                 "Engine",
-                "InputCore"
             }
             );
 
@@ -38,11 +37,10 @@ public class CustomMovieSceneTrackEditor : ModuleRules
 	            // For UI
                 "Slate",
                 "SlateCore",
-                "UMG",
 
 				"UnrealEd",
-				"GameplayTagsEditor",
                 "GameplayTags",
+                "GameplayTagsEditor",
 				"Sequencer",
                 "SequencerCore",
                 "MovieScene",
