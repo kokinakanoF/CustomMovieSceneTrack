@@ -9,7 +9,7 @@
 #include "MovieSceneGameplayTagSection.generated.h"
 
 /**
- * 
+ * GameplayTagをシーケンサーで操作できるようにするためのセクションクラス
  */
 UCLASS()
 class CUSTOMMOVIESCENETRACK_API UMovieSceneGameplayTagSection

@@ -17,14 +17,6 @@ struct FMovieSceneGameplayTagChannel : public FMovieSceneChannel
 	typedef FGameplayTag CurveValueType;
 
 public:
-	//TODO:•K—v‚Å‚ ‚ê‚Î—LŒø‰»‚·‚é
-#if 0
-	/**
-	 * Serialize this type from another 
-	 */
-	bool SerializeFromMismatchedTag(const FPropertyTag& Tag, FStructuredArchive::FSlot Slot);
-#endif
-
 	/**
 	 * Access a mutable interface for this channel's data
 	 * @return An object that is able to manipulate this channel's data

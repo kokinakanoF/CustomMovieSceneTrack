@@ -2,42 +2,6 @@
 
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 
-//TODO:•K—v‚Å‚ ‚ê‚Î—LŒø‰»‚·‚é
-#if 0
-bool FMovieSceneStringChannel::SerializeFromMismatchedTag(const FPropertyTag& Tag, FStructuredArchive::FSlot Slot)
-{
-	static const FName StringCurveName("StringCurve");
-	if (Tag.GetType().IsStruct(StringCurveName))
-	{
-		FStringCurve StringCurve;
-		FStringCurve::StaticStruct()->SerializeItem(Slot, &StringCurve, nullptr);
-
-		FString NewDefault = StringCurve.GetDefaultValue();
-		if (NewDefault.Len())
-		{
-			bHasDefaultValue = true;
-			DefaultValue = MoveTemp(NewDefault);
-		}
-
-		FFrameRate LegacyFrameRate = GetLegacyConversionFrameRate();
-
-		Times.Reserve(StringCurve.GetNumKeys());
-		Values.Reserve(StringCurve.GetNumKeys());
-		int32 Index = 0;
-		for (const FStringCurveKey& Key : StringCurve.GetKeys())
-		{
-			FFrameNumber KeyTime = UpgradeLegacyMovieSceneTime(nullptr, LegacyFrameRate, Key.Time);
-
-			FString Val(Key.Value);
-			ConvertInsertAndSort<FString>(Index++, KeyTime, Val, Times, Values);
-		}
-		return true;
-	}
-
-	return false;
-}
-#endif
-
 bool FMovieSceneGameplayTagChannel::Evaluate(FFrameTime InTime, FGameplayTag& OutValue) const
 {
 	if (const FGameplayTag* Result = Evaluate(InTime))
