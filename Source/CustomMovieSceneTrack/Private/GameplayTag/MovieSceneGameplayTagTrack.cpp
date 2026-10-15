@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "GameplayTag/MovieSceneGameplayTagTrack.h"
+#include "Evaluation/MovieSceneEvalTemplate.h"
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
-
+#include "GameplayTag/MovieSceneGameplayTagTemplate.h"
 
 UMovieSceneGameplayTagTrack::UMovieSceneGameplayTagTrack(const FObjectInitializer& ObjInit)
 {
@@ -17,4 +18,9 @@ UMovieSceneSection* UMovieSceneGameplayTagTrack::CreateNewSection()
 bool UMovieSceneGameplayTagTrack::SupportsType(TSubclassOf<UMovieSceneSection> SectionClass) const
 {
 	return (SectionClass == UMovieSceneGameplayTagSection::StaticClass());
+}
+
+FMovieSceneEvalTemplatePtr UMovieSceneGameplayTagTrack::CreateTemplateForSection(const UMovieSceneSection& InSection) const
+{
+	return FMovieSceneGameplayTagPropertySectionTemplate(*CastChecked<const UMovieSceneGameplayTagSection>(&InSection), *this);
 }
