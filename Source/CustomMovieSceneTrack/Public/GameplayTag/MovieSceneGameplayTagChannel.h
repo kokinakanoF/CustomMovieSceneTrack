@@ -129,15 +129,6 @@ private:
 	FMovieSceneKeyHandleMap KeyHandles;
 };
 
-//TODO:•K—v‚Å‚ ‚ê‚Î—LŒø‰»‚·‚é
-#if 0
-template<>
-struct TStructOpsTypeTraits<FMovieSceneGameplayTagChannel> : public TStructOpsTypeTraitsBase2<FMovieSceneGameplayTagChannel>
-{
-	enum { WithStructuredSerializeFromMismatchedTag = true };
-};
-#endif
-
 template<>
 struct TMovieSceneChannelTraits<FMovieSceneGameplayTagChannel> : TMovieSceneChannelTraitsBase<FMovieSceneGameplayTagChannel>
 {

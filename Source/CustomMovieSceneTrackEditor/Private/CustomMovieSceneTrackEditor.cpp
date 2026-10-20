@@ -8,26 +8,6 @@
 
 #define LOCTEXT_NAMESPACE "FCustomMovieSceneTrackEditor"
 
-#if 0
-#include "GameplayTag/MovieSceneGameplayTagSection.h"
-TSharedRef<SWidget> CreateKeyEditor(const TMovieSceneChannelHandle<FMovieSceneGameplayTagChannel>& Channel, const UE::Sequencer::FCreateKeyEditorParams& Params)
-{
-	const TMovieSceneExternalValue<FText>* ExternalValue = Channel.GetExtendedEditorData();
-	if (!ExternalValue)
-	{
-		return SNullWidget::NullWidget;
-	}
-
-	TSequencerKeyEditor<FMovieSceneTextChannel, FText> KeyEditor(
-		Params.ObjectBindingID, Channel,
-		Params.OwningSection, Params.Sequencer, Params.PropertyBindings, ExternalValue->OnGetExternalValue
-	);
-	KeyEditor.SetOwningObject(Cast<UMovieSceneSignedObject>(Params.OwningObject));
-
-	return SNew(STextCurveKeyEditor, KeyEditor);
-}
-#endif
-
 void FCustomMovieSceneTrackEditor::StartupModule()
 {
 	if (GIsEditor)
