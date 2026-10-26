@@ -48,6 +48,7 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 	];
 
 	// キーの設定状態を独自のアルゴリズムで取得できるように、コールバックをバインド
+	// @note バインドは各クラスの変数単位に行う
 	TArrayView<TWeakObjectPtr<>> Objects = InKeyEditor.GetSequencer()->FindObjectsInCurrentSequence(InKeyEditor.GetObjectBindingID());
 	for (TWeakObjectPtr<> Object : Objects)
 	{
