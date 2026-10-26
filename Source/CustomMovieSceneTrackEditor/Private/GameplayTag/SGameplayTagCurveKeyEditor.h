@@ -49,5 +49,10 @@ private:
 
 private:
 	TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag> KeyEditor;
+
+	/**
+	 * GameplayTagの型であるプロパティのポインタ
+	 * デストラクタ時にコールバックをアンバインドするのに使用します
+	 */
 	FProperty* GameplayTagProperty = nullptr;
 };

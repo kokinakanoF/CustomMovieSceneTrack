@@ -88,27 +88,42 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IP
 		return EPropertyKeyedStatus::NotKeyed;
 	}
 
-	UMovieSceneGameplayTagTrack* GameplayTagTrack = MovieScene->FindTrack<UMovieSceneGameplayTagTrack>(KeyEditor.GetObjectBindingID(), InPropertyHandle.GetProperty()->GetFName());
-	if (!GameplayTagTrack)
+	// プロパティのオーナーを取得
+	TArray<UObject*> OuterObjects;
+	InPropertyHandle.GetOuterObjects(OuterObjects);
+	if (OuterObjects.IsEmpty())
 	{
 		return EPropertyKeyedStatus::NotKeyed;
 	}
 
+
 	const TRange<FFrameNumber> FrameRange = TRange<FFrameNumber>(SequencerPtr->GetLocalTime().Time.FrameNumber);
-
-	// 各セクションのキーの状態を確認する
 	EPropertyKeyedStatus KeyedStatus = EPropertyKeyedStatus::NotKeyed;
-	for (const UMovieSceneSection* Section : GameplayTagTrack->GetAllSections())
-	{
-		if (const UMovieSceneGameplayTagSection* GameplayTagSection = Cast<UMovieSceneGameplayTagSection>(Section))
-		{
-			EPropertyKeyedStatus NewKeyedStatus = GetKeyedStatusInSection(*GameplayTagSection, FrameRange);
-			KeyedStatus = FMath::Max(KeyedStatus, NewKeyedStatus);
 
-			// キーが存在することが確定した時点で確認を終了する
-			if (KeyedStatus == EPropertyKeyedStatus::KeyedInFrame)
+	for (UObject* Object : OuterObjects)
+	{
+		// トラックの取得
+		constexpr bool bCreateHandleIfMissing = false;
+		FGuid OwingObjectHandle = SequencerPtr->GetHandleToObject(Object, bCreateHandleIfMissing);
+		UMovieSceneGameplayTagTrack* GameplayTagTrack = MovieScene->FindTrack<UMovieSceneGameplayTagTrack>(OwingObjectHandle, InPropertyHandle.GetProperty()->GetFName());
+		if (!GameplayTagTrack || GameplayTagTrack->IsEmpty())
+		{
+			continue;
+		}
+	
+		// 各セクションのキーの状態を確認する
+		for (const UMovieSceneSection* Section : GameplayTagTrack->GetAllSections())
+		{
+			if (const UMovieSceneGameplayTagSection* GameplayTagSection = Cast<UMovieSceneGameplayTagSection>(Section))
 			{
-				return KeyedStatus;
+				EPropertyKeyedStatus NewKeyedStatus = GetKeyedStatusInSection(*GameplayTagSection, FrameRange);
+				KeyedStatus = FMath::Max(KeyedStatus, NewKeyedStatus);
+
+				// キーが存在することが確定した時点で確認を終了する
+				if (KeyedStatus == EPropertyKeyedStatus::KeyedInFrame)
+				{
+					return KeyedStatus;
+				}
 			}
 		}
 	}
