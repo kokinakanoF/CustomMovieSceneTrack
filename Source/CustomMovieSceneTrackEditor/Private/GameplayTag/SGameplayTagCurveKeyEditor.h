@@ -18,6 +18,8 @@ public:
 	SLATE_BEGIN_ARGS(SGameplayTagCurveKeyEditor) {}
 	SLATE_END_ARGS();
 
+	~SGameplayTagCurveKeyEditor();
+
 	void Construct(const FArguments& InArgs, const TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag>& InKeyEditor);
 
 private:
@@ -28,5 +30,24 @@ private:
 	void OnTagChanged(const FGameplayTag InTag);
 
 private:
+	/**
+	 * プロパティに対するキーの設定状態を取得します
+	 * 
+	 * @param InPropertyHandle - 状態を確認する対象であるプロパティのハンドル
+	 * @return キーの設定状態
+	 */
+	EPropertyKeyedStatus GetPropertyKeyedStatus(const IPropertyHandle& InPropertyHandle) const;
+
+	/**
+	 * セクション内のキーの設定状態を取得します
+	 * 
+	 * @param InSection - セクション
+	 * @param InRange	- チェック範囲
+	 * @return キーの設定状態
+	 */
+	EPropertyKeyedStatus GetKeyedStatusInSection(const class UMovieSceneGameplayTagSection& InSection, const TRange<FFrameNumber>& InRange) const;
+
+private:
 	TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag> KeyEditor;
+	FProperty* GameplayTagProperty = nullptr;
 };

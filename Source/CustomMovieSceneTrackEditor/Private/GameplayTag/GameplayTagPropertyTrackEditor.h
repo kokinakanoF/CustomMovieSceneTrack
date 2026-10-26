@@ -43,11 +43,5 @@ public:
 protected:
 	//~ Begin FPropertyTrackEditor
 	virtual void GenerateKeysFromPropertyChanged(const FPropertyChangedParams& PropertyChangedParams, UMovieSceneSection* SectionToKey, FGeneratedTrackKeys& OutGeneratedKeys) override;
-	virtual void InitializeNewTrack(UMovieSceneGameplayTagTrack* NewTrack, FPropertyChangedParams PropertyChangedParams) override;
 	//~ End FPropertyTrackEditor
-
-private:
-	EPropertyKeyedStatus GetKeyedStatusInSection(const class UMovieSceneGameplayTagSection& Section, const TRange<FFrameNumber>& Range) const;
-
-	EPropertyKeyedStatus GetPropertyKeyedStatus(const IPropertyHandle& PropertyHandle) const;
 };
