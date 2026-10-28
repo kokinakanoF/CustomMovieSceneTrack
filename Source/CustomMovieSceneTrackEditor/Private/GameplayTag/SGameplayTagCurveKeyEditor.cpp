@@ -40,11 +40,18 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 	KeyEditor = InKeyEditor;
 
 	// GameplayTagを設定できるように、ウィジェットを生成
+	// SGameplayTagComboはボタン部分がDesiredSizeに含まれないため、そのまま使おうとするとパネルからはみ出てしまう
+	// HorizontalBoxでクリッピングを行うことで、その対策をしている
 	ChildSlot
 	[
-		SNew(SGameplayTagCombo)
-			.Tag(this, &SGameplayTagCurveKeyEditor::GetGameplayTag)
-			.OnTagChanged(this, &SGameplayTagCurveKeyEditor::OnTagChanged)
+		SNew(SHorizontalBox)
+			.Clipping(EWidgetClipping::OnDemand)
+			+ SHorizontalBox::Slot()
+			[
+				SNew(SGameplayTagCombo)
+					.Tag(this, &SGameplayTagCurveKeyEditor::GetGameplayTag)
+					.OnTagChanged(this, &SGameplayTagCurveKeyEditor::OnTagChanged)
+			]
 	];
 
 	// キーの設定状態を独自のアルゴリズムで取得できるように、コールバックをバインド
