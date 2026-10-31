@@ -138,6 +138,12 @@ private:
 	FMovieSceneKeyHandleMap KeyHandles;
 };
 
+/**
+ * Defines the channel traits for FMovieSceneGameplayTagChannel.
+ *
+ * Provides the extended editor data type used to retrieve FGameplayTag
+ * values from a TMovieSceneChannelHandle<FMovieSceneGameplayTagChannel>.
+ */
 template<>
 struct TMovieSceneChannelTraits<FMovieSceneGameplayTagChannel> : TMovieSceneChannelTraitsBase<FMovieSceneGameplayTagChannel>
 {
