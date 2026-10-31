@@ -7,8 +7,8 @@
 #include "MovieSceneClipboard.h"
 
 /**
- * ここにキーの型を登録しておくことで、ISequencerModule::RegisterChannelInterface()を使って
- * チャネルを登録することができるようになります。
+ * Registering key types here makes it possible to register channels using
+ * ISequencerModule::RegisterChannelInterface().
  */
 namespace MovieSceneClipboard
 {

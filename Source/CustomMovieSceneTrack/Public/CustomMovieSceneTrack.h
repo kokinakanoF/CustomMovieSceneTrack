@@ -6,7 +6,7 @@
 #include "Modules/ModuleManager.h"
 
 /**
- * カスタマイズされたシーケンサートラックを使えるようにするためのモジュール（ランタイム用） 
+  * Runtime module for enabling the use of customized Sequencer tracks.
  */
 class FCustomMovieSceneTrack : public IModuleInterface
 {

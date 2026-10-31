@@ -10,7 +10,7 @@
 #include "MovieSceneGameplayTagChannel.generated.h"
 
 /**
- * GameplayTagに関するセクションにおいて、キーや値などの情報を管理する構造体 
+ * Structure that manages key, value, and other information for GameplayTag sections.
  */
 USTRUCT()
 struct FMovieSceneGameplayTagChannel : public FMovieSceneChannel
@@ -18,8 +18,8 @@ struct FMovieSceneGameplayTagChannel : public FMovieSceneChannel
 	GENERATED_BODY()
 
 	/**
-	 * テンプレートで共通処理ができるように、キーの型をCurveValueTypeと定義しておく
-	 * 定義された名前は、SequencerChannelTraits.h のDeleteKeys()にて使用されている
+	 * Define the key type as CurveValueType so it can be handled by shared template logic.
+	 * This name is used by DeleteKeys() in SequencerChannelTraits.h.
 	 */
 	typedef FGameplayTag CurveValueType;
 
@@ -57,8 +57,8 @@ public:
 	/**
 	 * Evaluate this channel
 	 *
-	 * @param InTime	- The time to evaluate at
-	 * @param OutValue	- A value to receive the result
+	 * @param InTime	The time to evaluate at
+	 * @param OutValue	A value to receive the result
 	 * @return true if the channel was evaluated successfully, false otherwise
 	 */
 	CUSTOMMOVIESCENETRACK_API bool Evaluate(FFrameTime InTime, FGameplayTag& OutValue) const;
@@ -66,8 +66,8 @@ public:
 
 	/**
 	 * Add keys with these times to channel. The number of elements in both arrays much match or nothing is added.
-	 * @param InTimes  - Times to add
-	 * @param InValues - Values to add
+	 * @param InTimes	Times to add
+	 * @param InValues	Values to add
 	 */
 	inline void AddKeys(const TArray<FFrameNumber>& InTimes, const TArray<FGameplayTag>& InValues)
 	{
@@ -78,7 +78,7 @@ public:
 
 	/**
 	 * Set this channel's default value that should be used when no keys are present
-	 * @param InDefaultValue - The desired default value
+	 * @param InDefaultValue	The desired default value
 	 */
 	inline void SetDefault(FGameplayTag InDefaultValue)
 	{

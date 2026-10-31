@@ -36,7 +36,7 @@ public:
 	
 	/**
 	 * Creates an instance of this class (called by a sequencer).
-	 * @param OwningSequencer The sequencer instance to be used by this tool
+	 * @param OwningSequencer	The sequencer instance to be used by this tool
 	 * @return The new instance of this class
 	 */
 	static TSharedRef<ISequencerTrackEditor> CreateTrackEditor(TSharedRef<ISequencer> OwningSequencer);

@@ -25,7 +25,7 @@
 
 SGameplayTagCurveKeyEditor::~SGameplayTagCurveKeyEditor()
 {
-	// コールバックのアンバインド
+	// Unbind the callback.
 	if (GameplayTagProperty)
 	{
 		ISequencerPropertyKeyedStatusHandler& PropertyKeyedStatusHandler = KeyEditor.GetSequencer()->GetPropertyKeyedStatusHandler();
@@ -39,9 +39,10 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 {
 	KeyEditor = InKeyEditor;
 
-	// GameplayTagを設定できるように、ウィジェットを生成
-	// SGameplayTagComboはボタン部分がDesiredSizeに含まれないため、そのまま使おうとするとパネルからはみ出てしまう
-	// HorizontalBoxでクリッピングを行うことで、その対策をしている
+	// Create a widget that allows a GameplayTag to be set.
+	// Because the button portion of SGameplayTagCombo is not included in DesiredSize,
+	// using it directly would cause it to extend beyond the panel.
+	// Use a HorizontalBox for clipping to prevent this.
 	ChildSlot
 	[
 		SNew(SHorizontalBox)
@@ -54,8 +55,8 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 			]
 	];
 
-	// キーの設定状態を独自のアルゴリズムで取得できるように、コールバックをバインド
-	// バインドは各クラスの変数単位に行う
+	// Bind callbacks to retrieve key states using a custom algorithm.
+	// Bind them for each class member variable.
 	TArrayView<TWeakObjectPtr<>> Objects = InKeyEditor.GetSequencer()->FindObjectsInCurrentSequence(InKeyEditor.GetObjectBindingID());
 	for (TWeakObjectPtr<> Object : Objects)
 	{
@@ -96,7 +97,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IP
 		return EPropertyKeyedStatus::NotKeyed;
 	}
 
-	// プロパティのオーナーを取得
+	// Get the property owner.
 	TArray<UObject*> OuterObjects;
 	InPropertyHandle.GetOuterObjects(OuterObjects);
 	if (OuterObjects.IsEmpty())
@@ -110,7 +111,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IP
 
 	for (UObject* Object : OuterObjects)
 	{
-		// トラックの取得
+		// Get the track.
 		constexpr bool bCreateHandleIfMissing = false;
 		FGuid OwingObjectHandle = SequencerPtr->GetHandleToObject(Object, bCreateHandleIfMissing);
 		UMovieSceneGameplayTagTrack* GameplayTagTrack = MovieScene->FindTrack<UMovieSceneGameplayTagTrack>(OwingObjectHandle, InPropertyHandle.GetProperty()->GetFName());
@@ -119,7 +120,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IP
 			continue;
 		}
 	
-		// 各セクションのキーの状態を確認する
+		// Check the key state in each section.
 		for (const UMovieSceneSection* Section : GameplayTagTrack->GetAllSections())
 		{
 			if (const UMovieSceneGameplayTagSection* GameplayTagSection = Cast<UMovieSceneGameplayTagSection>(Section))
@@ -127,7 +128,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IP
 				EPropertyKeyedStatus NewKeyedStatus = GetKeyedStatusInSection(*GameplayTagSection, FrameRange);
 				KeyedStatus = FMath::Max(KeyedStatus, NewKeyedStatus);
 
-				// キーが存在することが確定した時点で確認を終了する
+				// Stop checking once the key is confirmed to exist.
 				if (KeyedStatus == EPropertyKeyedStatus::KeyedInFrame)
 				{
 					return KeyedStatus;
@@ -158,7 +159,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetKeyedStatusInSection(const U
 			continue;
 		}
 
-		// この時点で、キーが存在することが確定する
+		// At this point, the key is confirmed to exist.
 		SectionKeyedStatus = FMath::Max(SectionKeyedStatus, EPropertyKeyedStatus::KeyedInOtherFrame);
 
 		TArray<FFrameNumber> KeyTimes;
@@ -169,7 +170,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetKeyedStatusInSection(const U
 		}
 		else
 		{
-			// この時点で、キーがフレーム上に存在することが確定する
+			// At this point, the key is confirmed to exist on the frame.
 			SectionKeyedStatus = FMath::Max(SectionKeyedStatus, EPropertyKeyedStatus::KeyedInFrame);
 		}
 	}

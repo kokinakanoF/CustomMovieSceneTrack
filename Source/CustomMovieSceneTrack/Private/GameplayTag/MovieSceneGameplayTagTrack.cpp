@@ -9,7 +9,7 @@
 
 UMovieSceneSection* UMovieSceneGameplayTagTrack::CreateNewSection()
 {
-	// Undo/Redo‚É‘Î‰‚·‚é‚½‚ßARF_Transactional‚ğw’è
+	// Set RF_Transactional to support Undo/Redo.
 	return NewObject<UMovieSceneGameplayTagSection>(this, NAME_None, RF_Transactional);
 }
 

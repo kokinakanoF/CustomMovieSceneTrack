@@ -25,28 +25,28 @@ public:
 
 private:
 
-	/** SGameplayTagComboで表示するGameplayTagを返す */
+	/** Returns the GameplayTag displayed by SGameplayTagCombo. */
 	FGameplayTag GetGameplayTag() const;
 
-	/** SGameplayTagComboの値が変更された時に呼び出される */
+	/** Called when the value of SGameplayTagCombo changes. */
 	void OnTagChanged(const FGameplayTag InTag);
 
 private:
 
 	/**
-	 * プロパティに対するキーの設定状態を取得します
+	 * Gets the key state for a property.
 	 * 
-	 * @param InPropertyHandle - 状態を確認する対象であるプロパティのハンドル
-	 * @return キーの設定状態
+	 * @param InPropertyHandle	Handle for the property whose state is checked.
+	 * @return The key state.
 	 */
 	EPropertyKeyedStatus GetPropertyKeyedStatus(const IPropertyHandle& InPropertyHandle) const;
 
 	/**
-	 * セクション内のキーの設定状態を取得します
+	 * Gets the key state within a section.
 	 * 
-	 * @param InSection - セクション
-	 * @param InRange	- チェック範囲
-	 * @return キーの設定状態
+	 * @param InSection	Section.
+	 * @param InRange	Range to check.
+	 * @return The key state.
 	 */
 	EPropertyKeyedStatus GetKeyedStatusInSection(const class UMovieSceneGameplayTagSection& InSection, const TRange<FFrameNumber>& InRange) const;
 
@@ -55,8 +55,8 @@ private:
 	TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag> KeyEditor;
 
 	/**
-	 * GameplayTagの型であるプロパティのポインタ
-	 * デストラクタ時にコールバックをアンバインドするのに使用します
+	 * Pointer to the property whose type is GameplayTag.
+	 * Used to unbind the callback in the destructor.
 	 */
 	FProperty* GameplayTagProperty = nullptr;
 };
