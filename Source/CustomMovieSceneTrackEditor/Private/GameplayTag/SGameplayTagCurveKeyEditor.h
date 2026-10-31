@@ -6,6 +6,7 @@
 #include "CurveKeyEditors/SequencerKeyEditor.h"
 #include "Types/SlateEnums.h"
 #include "Widgets/DeclarativeSyntaxSupport.h"
+
 #include "GameplayTagContainer.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 
@@ -23,6 +24,7 @@ public:
 	void Construct(const FArguments& InArgs, const TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag>& InKeyEditor);
 
 private:
+
 	/** SGameplayTagComboで表示するGameplayTagを返す */
 	FGameplayTag GetGameplayTag() const;
 
@@ -30,6 +32,7 @@ private:
 	void OnTagChanged(const FGameplayTag InTag);
 
 private:
+
 	/**
 	 * プロパティに対するキーの設定状態を取得します
 	 * 
@@ -48,6 +51,7 @@ private:
 	EPropertyKeyedStatus GetKeyedStatusInSection(const class UMovieSceneGameplayTagSection& InSection, const TRange<FFrameNumber>& InRange) const;
 
 private:
+
 	TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag> KeyEditor;
 
 	/**

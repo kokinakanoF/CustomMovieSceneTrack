@@ -19,6 +19,7 @@ class CUSTOMMOVIESCENETRACK_API UMovieSceneGameplayTagSection
 	GENERATED_BODY()
 
 public:
+
 	UMovieSceneGameplayTagSection(const FObjectInitializer& InObjectInitializer);
 
 	const FMovieSceneGameplayTagChannel& GetChannel() const { return GameplayTagChannel; }
@@ -29,6 +30,7 @@ public:
 	//~End IMovieSceneEntityProvider interface
 	
 protected:
+
 	UPROPERTY()
 	FMovieSceneGameplayTagChannel GameplayTagChannel;
 };

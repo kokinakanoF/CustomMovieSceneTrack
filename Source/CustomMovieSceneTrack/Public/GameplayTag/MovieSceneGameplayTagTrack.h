@@ -8,7 +8,7 @@
 #include "MovieSceneGameplayTagTrack.generated.h"
 
 /**
- * GameplayTagをシーケンサーで操作できるようにするためのトラッククラス
+ * GameplayTagをシーケンサーで操作できるようにするための独自トラッククラス
  */
 UCLASS()
 class CUSTOMMOVIESCENETRACK_API UMovieSceneGameplayTagTrack
@@ -18,8 +18,7 @@ class CUSTOMMOVIESCENETRACK_API UMovieSceneGameplayTagTrack
 	GENERATED_BODY()
 	
 public:
-	UMovieSceneGameplayTagTrack(const FObjectInitializer& ObjInit);
-	  
+
 	//~Begin UMovieSceneTrack interface
 	virtual UMovieSceneSection* CreateNewSection() override;
 	virtual bool SupportsType(TSubclassOf<UMovieSceneSection> SectionClass) const override;

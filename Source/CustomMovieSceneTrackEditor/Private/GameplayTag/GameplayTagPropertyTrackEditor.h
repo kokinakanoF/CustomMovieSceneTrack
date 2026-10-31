@@ -22,6 +22,7 @@ CUSTOMMOVIESCENETRACKEDITOR_API TSharedRef<SWidget> CreateKeyEditor(const TMovie
 class FGameplayTagPropertyTrackEditor : public FPropertyTrackEditor<UMovieSceneGameplayTagTrack>
 {
 public:
+
 	FGameplayTagPropertyTrackEditor(TSharedRef<ISequencer> InSequencer)
 		: FPropertyTrackEditor(InSequencer, GetAnimatedPropertyTypes())
 	{
@@ -41,6 +42,7 @@ public:
 	static TSharedRef<ISequencerTrackEditor> CreateTrackEditor(TSharedRef<ISequencer> OwningSequencer);
 	
 protected:
+
 	//~ Begin FPropertyTrackEditor
 	virtual void GenerateKeysFromPropertyChanged(const FPropertyChangedParams& PropertyChangedParams, UMovieSceneSection* SectionToKey, FGeneratedTrackKeys& OutGeneratedKeys) override;
 	//~ End FPropertyTrackEditor

@@ -1,13 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "GameplayTag/MovieSceneGameplayTagTrack.h"
+
 #include "Evaluation/MovieSceneEvalTemplate.h"
+
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
 #include "GameplayTag/MovieSceneGameplayTagTemplate.h"
-
-UMovieSceneGameplayTagTrack::UMovieSceneGameplayTagTrack(const FObjectInitializer& ObjInit)
-{
-}
 
 UMovieSceneSection* UMovieSceneGameplayTagTrack::CreateNewSection()
 {

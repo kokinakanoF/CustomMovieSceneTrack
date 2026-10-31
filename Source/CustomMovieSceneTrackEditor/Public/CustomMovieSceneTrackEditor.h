@@ -7,22 +7,14 @@
 #include "GameplayTagContainer.h"
 #include "MovieSceneClipboard.h"
 
-namespace MovieSceneClipboard
-{
-	template<> inline FName GetKeyTypeName<FGameplayTag>()
-	{
-		static FName Name("GameplayTag");
-		return Name;
-	}
-}
-
 class FCustomMovieSceneTrackEditor : public IModuleInterface
 {
 public:
 
-	/** IModuleInterface implementation */
+	//~Begin IModuleInterface interface
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+	//~End IModuleInterface interface
 
 private:
 	FDelegateHandle GameplayTagPropertyTrackCreateEditorHandle;

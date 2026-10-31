@@ -3,8 +3,10 @@
 #include "CustomMovieSceneTrackEditor.h"
 #include "ISequencerModule.h"
 #include "SequencerChannelInterface.h"
+
 #include "GameplayTag/GameplayTagPropertyTrackEditor.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
+#include "CustomClipboardTypes.h"
 
 #define LOCTEXT_NAMESPACE "FCustomMovieSceneTrackEditor"
 
@@ -14,9 +16,8 @@ void FCustomMovieSceneTrackEditor::StartupModule()
 	{
 		ISequencerModule& SequencerModule = FModuleManager::Get().LoadModuleChecked<ISequencerModule>("Sequencer");
 
+		// GameplayTag
 		GameplayTagPropertyTrackCreateEditorHandle = SequencerModule.RegisterPropertyTrackEditor<FGameplayTagPropertyTrackEditor>();
-
-		//TODO:ここを有効化するとエラーになるので対応！
 		SequencerModule.RegisterChannelInterface<FMovieSceneGameplayTagChannel>();
 	}
 }
@@ -24,6 +25,8 @@ void FCustomMovieSceneTrackEditor::StartupModule()
 void FCustomMovieSceneTrackEditor::ShutdownModule()
 {
 	ISequencerModule& SequencerModule = FModuleManager::Get().LoadModuleChecked<ISequencerModule>("Sequencer");
+
+	// GameplayTag
 	SequencerModule.UnRegisterTrackEditor(GameplayTagPropertyTrackCreateEditorHandle);
 }
 

@@ -5,13 +5,13 @@
 #include "GameplayTagContainer.h"
 
 UMovieSceneGameplayTagSection::UMovieSceneGameplayTagSection(const FObjectInitializer& InObjectInitializer)
+	: Super(InObjectInitializer)
 {
 	bSupportsInfiniteRange = true;
 	EvalOptions.EnableAndSetCompletionMode(EMovieSceneCompletionMode::ProjectDefault);
 
 #if WITH_EDITOR
 	ChannelProxy = MakeShared<FMovieSceneChannelProxy>(GameplayTagChannel, FMovieSceneChannelMetaData(), TMovieSceneExternalValue<FGameplayTag>::Make());
-	//TextChannel.SetPackage(GetPackage());
 #else
 	ChannelProxy = MakeShared<FMovieSceneChannelProxy>(GameplayTagChannel);
 #endif
