@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Koki Nakano.All Rights Reserved.
 
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
 #include "Tracks/MovieScenePropertyTrack.h"
@@ -30,10 +30,13 @@ void UMovieSceneGameplayTagSection::ImportEntityImpl(UMovieSceneEntitySystemLink
 	const FMovieSceneTracksComponentTypes* TracksComponents = FMovieSceneTracksComponentTypes::Get();
 
 #if 0
-	FPropertyTrackEntityImportHelper(TracksComponents->Integer)
-		.Add(Components->IntegerChannel, &IntegerCurve)
-		.Add(Components->BlenderType, UMovieScenePiecewiseIntegerBlenderSystem::StaticClass())
-		.Commit(this, Params, OutImportedEntity);
+	OutImportedEntity->AddBuilder(
+		FEntityBuilder()
+		.Add(BuiltInComponentTypes->GenericObjectBinding, Params.GetObjectBindingID())
+		.Add(BuiltInComponentTypes->BoundObjectResolver, MovieSceneHelpers::ResolveSceneComponentBoundObject)
+		.Add(TrackComponents->AttachParentBinding, ConstraintBindingID)
+		.Add(TrackComponents->AttachComponent, AttachComponent)
+	);
 #endif
 }
 

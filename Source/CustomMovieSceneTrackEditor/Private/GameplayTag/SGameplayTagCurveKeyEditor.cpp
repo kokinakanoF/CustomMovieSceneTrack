@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright Koki Nakano.All Rights Reserved.
 
 #include "SGameplayTagCurveKeyEditor.h"
 // GameplayTagsEditor

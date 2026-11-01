@@ -1,4 +1,4 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright Koki Nakano.All Rights Reserved.
 
 #include "GameplayTag/GameplayTagPropertyTrackEditor.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
