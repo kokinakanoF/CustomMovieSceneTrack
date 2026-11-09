@@ -22,7 +22,7 @@ TSharedRef<SWidget> CreateKeyEditor(const TMovieSceneChannelHandle<FMovieSceneGa
 	);
 	KeyEditor.SetOwningObject(Cast<UMovieSceneSignedObject>(Params.OwningObject));
 
-	return SNew(SGameplayTagCurveKeyEditor, KeyEditor);
+	return SNew(SGameplayTagKeyEditor, KeyEditor);
 }
 
 

@@ -1,6 +1,6 @@
 // Copyright Koki Nakano.All Rights Reserved.
 
-#include "SGameplayTagCurveKeyEditor.h"
+#include "SGameplayTagKeyEditor.h"
 // GameplayTagsEditor
 #include "SGameplayTagCombo.h"
 // MovieScene
@@ -20,10 +20,10 @@
 #include "GameplayTag/MovieSceneGameplayTagTrack.h"
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
 
-#define LOCTEXT_NAMESPACE "SGameplayTagCurveKeyEditor"
+#define LOCTEXT_NAMESPACE "SGameplayTagKeyEditor"
 
 
-SGameplayTagCurveKeyEditor::~SGameplayTagCurveKeyEditor()
+SGameplayTagKeyEditor::~SGameplayTagKeyEditor()
 {
 	// Unbind the callback.
 	if (GameplayTagProperty)
@@ -35,7 +35,7 @@ SGameplayTagCurveKeyEditor::~SGameplayTagCurveKeyEditor()
 	}
 }
 
-void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag>& InKeyEditor)
+void SGameplayTagKeyEditor::Construct(const FArguments& InArgs, const TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag>& InKeyEditor)
 {
 	KeyEditor = InKeyEditor;
 
@@ -50,8 +50,8 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 			+ SHorizontalBox::Slot()
 			[
 				SNew(SGameplayTagCombo)
-					.Tag(this, &SGameplayTagCurveKeyEditor::GetGameplayTag)
-					.OnTagChanged(this, &SGameplayTagCurveKeyEditor::OnTagChanged)
+					.Tag(this, &SGameplayTagKeyEditor::GetGameplayTag)
+					.OnTagChanged(this, &SGameplayTagKeyEditor::OnTagChanged)
 			]
 	];
 
@@ -64,23 +64,23 @@ void SGameplayTagCurveKeyEditor::Construct(const FArguments& InArgs, const TSequ
 		if (GameplayTagProperty)
 		{
 			ISequencerPropertyKeyedStatusHandler& PropertyKeyedStatusHandler = InKeyEditor.GetSequencer()->GetPropertyKeyedStatusHandler();
-			PropertyKeyedStatusHandler.GetExternalHandler(GameplayTagProperty).BindRaw(this, &SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus);
+			PropertyKeyedStatusHandler.GetExternalHandler(GameplayTagProperty).BindRaw(this, &SGameplayTagKeyEditor::GetPropertyKeyedStatus);
 		}
 	}
 }
 
-FGameplayTag SGameplayTagCurveKeyEditor::GetGameplayTag() const
+FGameplayTag SGameplayTagKeyEditor::GetGameplayTag() const
 {
 	return KeyEditor.GetCurrentValue();
 }
 
-void SGameplayTagCurveKeyEditor::OnTagChanged(const FGameplayTag InTag)
+void SGameplayTagKeyEditor::OnTagChanged(const FGameplayTag InTag)
 {
 	FScopedTransaction Transaction(LOCTEXT("SetGameplayTagKey", "Set GameplayTag Key Value"));
 	KeyEditor.SetValueWithNotify(InTag, EMovieSceneDataChangeType::TrackValueChangedRefreshImmediately);
 }
 
-EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IPropertyHandle& InPropertyHandle) const
+EPropertyKeyedStatus SGameplayTagKeyEditor::GetPropertyKeyedStatus(const IPropertyHandle& InPropertyHandle) const
 {
 	TRACE_CPUPROFILER_EVENT_SCOPE(FGameplayTagPropertyTrackEditor::GetPropertyKeyedStatus);
 
@@ -140,7 +140,7 @@ EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetPropertyKeyedStatus(const IP
 	return KeyedStatus;
 }
 
-EPropertyKeyedStatus SGameplayTagCurveKeyEditor::GetKeyedStatusInSection(const UMovieSceneGameplayTagSection& InSection, const TRange<FFrameNumber>& InRange) const
+EPropertyKeyedStatus SGameplayTagKeyEditor::GetKeyedStatusInSection(const UMovieSceneGameplayTagSection& InSection, const TRange<FFrameNumber>& InRange) const
 {
 	EPropertyKeyedStatus SectionKeyedStatus = EPropertyKeyedStatus::NotKeyed;
 	int32 EmptyChannelCount = 0;

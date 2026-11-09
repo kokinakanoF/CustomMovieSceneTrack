@@ -6,7 +6,7 @@
 #include "GameplayTagContainer.h"
 #include "Channels/MovieSceneChannelHandle.h"
 #include "GameplayTag/MovieSceneGameplayTagTrack.h"
-#include "GameplayTag/SGameplayTagCurveKeyEditor.h"
+#include "GameplayTag/SGameplayTagKeyEditor.h"
 
 
 class UMovieSceneKeyStructType;

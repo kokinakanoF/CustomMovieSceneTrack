@@ -13,13 +13,14 @@
 /**
  * A widget for editing a curve representing string keys.
  */
-class SGameplayTagCurveKeyEditor : public SCompoundWidget
+class SGameplayTagKeyEditor : public SCompoundWidget
 {
 public:
-	SLATE_BEGIN_ARGS(SGameplayTagCurveKeyEditor) {}
+
+	SLATE_BEGIN_ARGS(SGameplayTagKeyEditor) {}
 	SLATE_END_ARGS();
 
-	~SGameplayTagCurveKeyEditor();
+	~SGameplayTagKeyEditor();
 
 	void Construct(const FArguments& InArgs, const TSequencerKeyEditor<FMovieSceneGameplayTagChannel, FGameplayTag>& InKeyEditor);
 
