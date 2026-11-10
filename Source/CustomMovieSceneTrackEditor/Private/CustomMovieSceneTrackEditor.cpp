@@ -1,4 +1,4 @@
-// Copyright Koki Nakano.All Rights Reserved.
+// Copyright Koki Nakano. All Rights Reserved.
 
 #include "CustomMovieSceneTrackEditor.h"
 #include "ISequencerModule.h"
