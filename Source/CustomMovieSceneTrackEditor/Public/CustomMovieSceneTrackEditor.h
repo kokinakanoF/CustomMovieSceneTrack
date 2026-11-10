@@ -18,4 +18,5 @@ public:
 
 private:
 	FDelegateHandle GameplayTagPropertyTrackCreateEditorHandle;
+	FDelegateHandle GameplayTagContainerPropertyTrackCreateEditorHandle;
 };
