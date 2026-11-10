@@ -1,9 +1,9 @@
 // Copyright Koki Nakano. All Rights Reserved.
 
 #include "CustomMovieSceneTrackEditor.h"
+
 #include "ISequencerModule.h"
 #include "SequencerChannelInterface.h"
-
 #include "GameplayTag/GameplayTagPropertyTrackEditor.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 #include "GameplayTagContainer/GameplayTagContainerPropertyTrackEditor.h"

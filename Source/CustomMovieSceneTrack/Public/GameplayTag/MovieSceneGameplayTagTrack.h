@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Tracks/MovieScenePropertyTrack.h"
 #include "Compilation/IMovieSceneTrackTemplateProducer.h"
 #include "MovieSceneGameplayTagTrack.generated.h"

@@ -1,6 +1,7 @@
 // Copyright Koki Nakano. All Rights Reserved.
 
 #include "GameplayTag/GameplayTagPropertyTrackEditor.h"
+
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 
 bool CanCreateKeyEditor(const FMovieSceneGameplayTagChannel* Channel)

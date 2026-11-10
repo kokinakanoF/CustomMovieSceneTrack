@@ -1,22 +1,15 @@
 // Copyright Koki Nakano. All Rights Reserved.
 
 #include "SGameplayTagKeyEditor.h"
-// GameplayTagsEditor
+
 #include "SGameplayTagCombo.h"
-// MovieScene
 #include "TrackInstancePropertyBindings.h"
-// PropertyEditor
 #include "IDetailKeyframeHandler.h"
-// Sequencer
 #include "ISequencer.h"
 #include "ISequencerPropertyKeyedStatus.h"
-#include "MovieSceneTrackEditor.h"
-// Slate
-#include "Widgets/Layout/SBox.h"
-// UnrealEd
+#include "MovieScene.h"
+#include "Widgets/SBoxPanel.h"
 #include "ScopedTransaction.h"
-
-// CustomMovieSceneTrack
 #include "GameplayTag/MovieSceneGameplayTagTrack.h"
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
 

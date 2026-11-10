@@ -3,7 +3,6 @@
 #include "GameplayTag/MovieSceneGameplayTagTrack.h"
 
 #include "Evaluation/MovieSceneEvalTemplate.h"
-
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
 #include "GameplayTag/MovieSceneGameplayTagTemplate.h"
 
