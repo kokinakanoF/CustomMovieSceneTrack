@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "MovieSceneSection.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 #include "MovieSceneGameplayTagSection.generated.h"

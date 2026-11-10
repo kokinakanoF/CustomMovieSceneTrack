@@ -1,6 +1,7 @@
 // Copyright Koki Nakano. All Rights Reserved.
 
 #include "GameplayTag/MovieSceneGameplayTagTemplate.h"
+
 #include "Tracks/MovieScenePropertyTrack.h"
 #include "GameplayTag/MovieSceneGameplayTagSection.h"
 

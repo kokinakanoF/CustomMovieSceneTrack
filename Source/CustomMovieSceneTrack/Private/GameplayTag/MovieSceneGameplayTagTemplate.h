@@ -8,7 +8,6 @@
 
 class UMovieScenePropertyTrack;
 class UMovieSceneGameplayTagSection;
-struct FMovieSceneGameplayTagChannel;
 
 USTRUCT()
 struct FMovieSceneGameplayTagPropertySectionTemplate

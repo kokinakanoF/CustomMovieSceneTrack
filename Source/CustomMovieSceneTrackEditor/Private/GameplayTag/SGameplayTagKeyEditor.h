@@ -3,10 +3,8 @@
 #pragma once
 
 #include "Widgets/SCompoundWidget.h"
-#include "CurveKeyEditors/SequencerKeyEditor.h"
-#include "Types/SlateEnums.h"
 #include "Widgets/DeclarativeSyntaxSupport.h"
-
+#include "CurveKeyEditors/SequencerKeyEditor.h"
 #include "GameplayTagContainer.h"
 #include "GameplayTag/MovieSceneGameplayTagChannel.h"
 
