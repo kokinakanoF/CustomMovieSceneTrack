@@ -11,3 +11,8 @@
 # インストール方法
 
 # 注意
+
+# License
+This project is licensed under the MIT License.
+Copyright (c) 2026 Koki Nakano.
+See the LICENSE file for details.
