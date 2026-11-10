@@ -17,4 +17,10 @@ namespace MovieSceneClipboard
 	{
 		return "GameplayTag";
 	}
+
+	// GameplayTagContainer
+	template<> inline FName GetKeyTypeName<FGameplayTagContainer>()
+	{
+		return "GameplayTagContainer";
+	}
 }
