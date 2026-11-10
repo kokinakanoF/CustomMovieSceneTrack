@@ -17,10 +17,12 @@ struct FMovieSceneGameplayTagPropertySectionTemplate
 	GENERATED_BODY()
 
 public:
+
 	FMovieSceneGameplayTagPropertySectionTemplate() {}
 	FMovieSceneGameplayTagPropertySectionTemplate(const UMovieSceneGameplayTagSection& Section, const UMovieScenePropertyTrack& Track);
 
 protected:
+
 	//~Begin FMovieScenePropertySectionTemplate interface
 	virtual UScriptStruct& GetScriptStructImpl() const override { return *StaticStruct(); }
 	virtual void SetupOverrides() override { EnableOverrides(RequiresSetupFlag); }
@@ -28,6 +30,7 @@ protected:
 	//~End FMovieScenePropertySectionTemplate interface
 
 protected:
+
 	UPROPERTY()
 	FMovieSceneGameplayTagChannel GameplayTagChannel;
 };

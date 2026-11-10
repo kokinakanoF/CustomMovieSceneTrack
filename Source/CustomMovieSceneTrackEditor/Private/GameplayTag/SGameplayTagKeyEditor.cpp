@@ -22,7 +22,6 @@
 
 #define LOCTEXT_NAMESPACE "SGameplayTagKeyEditor"
 
-
 SGameplayTagKeyEditor::~SGameplayTagKeyEditor()
 {
 	// Unbind the callback.
