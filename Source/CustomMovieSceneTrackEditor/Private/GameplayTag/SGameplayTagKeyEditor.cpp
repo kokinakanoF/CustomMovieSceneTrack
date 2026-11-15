@@ -106,6 +106,11 @@ EPropertyKeyedStatus SGameplayTagKeyEditor::GetPropertyKeyedStatus(const IProper
 		// Get the track.
 		constexpr bool bCreateHandleIfMissing = false;
 		FGuid OwingObjectHandle = SequencerPtr->GetHandleToObject(Object, bCreateHandleIfMissing);
+		if (!OwingObjectHandle.IsValid())
+		{
+			continue;
+		}
+
 		UMovieSceneGameplayTagTrack* GameplayTagTrack = MovieScene->FindTrack<UMovieSceneGameplayTagTrack>(OwingObjectHandle, InPropertyHandle.GetProperty()->GetFName());
 		if (!GameplayTagTrack || GameplayTagTrack->IsEmpty())
 		{
